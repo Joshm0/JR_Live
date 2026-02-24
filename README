@@ -1,2 +1,52 @@
-This application will display and play the JR-Yamanote Line station 
-names and jingles in real-time.
+Synopsis:
+
+    This application will display and play the JR-Yamanote Line station 
+    names and jingles in real-time via an arduino with a connected speaker.
+
+ATTENTION!!:
+
+    If you want to implement this project for yourself you will need to sign
+    up to the ODPT website here: 
+    https://www.odpt.org/en/
+    
+    This will give you access to the API to begin recieving the train data.
+    You will not be able to make this project work without the access key.
+    Further, you will need to sign up to the challenge in order to query the
+    JR-Line.
+
+Inspiration:
+
+    Born out of my recent visit to Japan; I grew accustomed to hearing the
+    various station jingles that signaled my arrival at a particular station.
+    Each jingle was unique and a beautiful way of indicating to passangers that
+    they arrived. This project seeks to ecapsulate that same feeling but from
+    affar by utilizing Japan's own live train data to track a train and play
+    a particular station jingle for whichever station the train arrives at.
+
+Operation:
+
+    For now the application simply queries the JR-Line (the one I used most
+    and which in particular has the best station jingle; Ikebukuro's BIC Camera 
+    jingle) but I plan to add functionality that will allow a user to select a
+    particular operator should they so choose. Please stay tuned for when I update
+    it with that functionality.
+
+    For this application, I wrote a StringBuffer object as the ardunio IDE does not
+    natively support it. It is not strictly necessary; through my testing, creating
+    a dedicated char array in each read response works just as well. Having the
+    StringBuffer gives me more peace of mind though. If you want to use the object
+    simply add the .hpp & .cpp files to the arduino IDE library folder explained 
+    here: 
+    https://docs.arduino.cc/learn/contributions/arduino-creating-library-guide/
+
+    This way, if you want to use the library for any of your other projects (:D) you 
+    can simply import it the way you would for any normal library!
+
+    This code is free to use, all I ask is you provide a link to this github page
+    and credit the original code.
+
+References:
+
+    https://github.com/witnessmenow/arduino-sample-api-request/blob/master/ESP32/HTTP_GET/HTTP_GET.ino
+    https://github.com/tuan-karma/ESP32_WiFiClientSecure/blob/main/examples/WiFiClientSecure/WiFiClientSecure.ino
+    https://docs.arduino.cc/tutorials/uno-r4-wifi/wifi-examples/
