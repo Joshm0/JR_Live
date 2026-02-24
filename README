@@ -37,7 +37,12 @@ Operation:
     StringBuffer gives me more peace of mind though. If you want to use the object
     simply add the .hpp & .cpp files to the arduino IDE library folder explained 
     here: 
+    
     https://docs.arduino.cc/learn/contributions/arduino-creating-library-guide/
+
+    The Stringbuffer code can be found here:
+
+    https://github.com/Joshm0/Arduino-Stringbuffer
 
     This way, if you want to use the library for any of your other projects (:D) you 
     can simply import it the way you would for any normal library!
