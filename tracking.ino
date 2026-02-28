@@ -1,6 +1,7 @@
 #include <SPI.h>
 #include <WiFiS3.h>
 #include <WiFiSSLClient.h>
+#include <DFRobotDFPlayerMini.h>
 /*
   Self made StringBuffer object, not strictly necessary
   as I assume C++ garbage collection works fine.
@@ -40,6 +41,9 @@ WiFiSSLClient client;
 
 // create stringbuffer object
 StringBuffer buffer(800);
+
+// create DFplayer object
+DFRobotDFPlayerMini myDFPlayer;
 /*
 
 Arduino setup code inspired from:
@@ -54,7 +58,7 @@ int changes = 0;
 
 void setup() {
   
-  Serial.begin(9600);
+  Serial.begin(115200);
   while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB port only
   }
@@ -81,6 +85,19 @@ void setup() {
   }
 
   printWifiStatus();
+
+  Serial.println(F("Beginning DFplayer Startup"));
+  Serial1.begin(9600);
+
+  if (!myDFPlayer.begin(Serial1, /*isACK = */true, /*doReset = */true)) {  //Use serial to communicate with mp3.
+    Serial.println(F("Unable to begin:"));
+    Serial.println(F("1.Please recheck the connection!"));
+    Serial.println(F("2.Please insert the SD card!"));
+  }
+
+  Serial.println(F("DFPlayer Mini online."));
+  
+  myDFPlayer.volume(20);
 }
 
 /*
@@ -174,7 +191,7 @@ void sendRequest() {
     // If we find a train, query the train
     if (train) {
       
-      //Serial.println("Printing with Train!");
+      Serial.println("Printing with Train!");
       client.print(TRAIN);
       client.print(trainNumber);
 

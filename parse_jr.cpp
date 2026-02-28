@@ -48,7 +48,7 @@ int parseData(char *api_data, int data_len) {
   if ((prevStation != toStation) && toStation) {
 
     Serial.println("Play Station Melody");
-    
+    myDFPlayer.play(1);
   }
 
   prevStation = toStation;
